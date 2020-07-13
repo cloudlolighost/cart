@@ -2,7 +2,7 @@ language: python
 
 addons:
   sonarcloud:
-    organization: "aimerfan"
+    organization: "cloudlolighost"
     token:
       secure: $SC_TOKEN
 
