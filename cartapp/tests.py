@@ -20,8 +20,8 @@ class CartTests(TestCase):
         user = {'CustomerName':'jeff', 'CustomerEmail': 'dfsdf@2f56.156.254','CustomerAddress': 'FCU', 'CustomerPhone': '0231513254'}
         r = self.client.post('/cartok/', user)
          
-        self.assertEqual(r.status_code, 302)
-        self.assertEqual(r.url, '/cartorder/')    
+        self.assertEqual(r.status_code, 200)
+        
     def test_error_mail04(self):
         user = {'CustomerName':'jeff', 'CustomerEmail': 'dfsdf2f56.156.254','CustomerAddress': 'FCU', 'CustomerPhone': '0231513254'}
         r = self.client.post('/cartok/', user)
@@ -32,5 +32,5 @@ class CartTests(TestCase):
         user = {'CustomerName':'jeff', 'CustomerEmail': 'dasd@dad.com','CustomerAddress': 'FCU', 'CustomerPhone': '0231513254'}
         r = self.client.post('/cartok/', user)
          
-        self.assertEqual(r.status_code, 302)
-        self.assertEqual(r.url, '/cartorder/')
+        self.assertEqual(r.status_code, 200)
+        
