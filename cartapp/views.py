@@ -3,6 +3,9 @@ from cartapp import models
 from smtplib import SMTP, SMTPAuthenticationError, SMTPException
 from email.mime.text import MIMEText
 
+from django.core.validators import validate_email 
+from django.core.exceptions import ValidationError
+
 message = ''
 cartlist = []  #購買商品串列
 customname = ''  #購買者姓名
@@ -97,6 +100,12 @@ def cartok(request):  #按確認購買鈕
 	customemail = request.POST.get('CustomerEmail', '')
 	paytype = request.POST.get('paytype', '')
 	customname1 = customname
+	try :
+		validate_email(customemail)
+	except ValidationError as e:
+		message = "email格式不符"
+		return redirect('/cartorder/')
+
 	if customname=='' or customphone=='' or customaddress=='' or customemail=='':
 		message = '姓名、電話、住址及電子郵件皆需輸入'
 		return redirect('/cartorder/')
